@@ -1,0 +1,30 @@
+<!-- <script>
+
+    $(document).on('submit','#post-form',function(e){
+      e.preventDefault(); //stpos the page from refreshing
+      e.stopImmediatePropagation();
+      $.ajax({
+        type:'POST',
+        url:'/login',
+        data: {
+             name:$('#name').val(),
+             email:$('#email').val(),
+             phone:$('#phone').val(),
+             address:$('#address').val(),
+             product_id:$('#product_id').val(),
+             quantity:$('#quantity').val(),
+             csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+        },
+        success:function(){
+              alert("Successfully Bought The Product");
+              $("#name").val(''); //yo 4ta chai after form submission clear the input 
+              $("#email").val('');
+              $("#phone").val('');
+              $("#address").val('');
+              $("#product_id").val('');
+              $("#quantity").val('');
+        },
+      });
+    });
+  
+  </script> -->

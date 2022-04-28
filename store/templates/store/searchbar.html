@@ -1,0 +1,59 @@
+{% extends 'store/main.html' %} 
+{% load static %} 
+{% block content %}
+{% include 'store/topnav.html' %} 
+{% include 'store/navbar.html' %}
+<h2 class="text-center">Search Results</h2>
+<hr>
+
+
+<div class="container">
+    
+     <div class="top-sellers">
+        <div class="container">
+        {% if products.exists %}        
+          <div class="seller-grids">
+            {% for product in featured_list %}
+            <div class="col-md-3 seller-grid">
+              <a href="{% url 'products' %}"><img src="{{product.image.url}}" alt="" /></a>
+              <h4><a href="{% url 'products' %}">{{product.name}}</a></h4>
+              <span>ID: {{product.code}}</span>
+            </div>
+            {% endfor %}
+            <div class="clearfix"></div>
+          </div>
+          {% else %}
+          <p>No Products available</p>
+        {% endif %} 
+        </div>
+      </div>
+    
+
+    
+      <div class="top-sellers">
+        <div class="container">
+        {% if products.exists %} 
+          {% for product in products %}
+              <div class="row">
+                
+                    <h4 class="mb-4">{{product.name}}</h4>
+                    <div class="col-md-4">
+                      
+                      <div class="thumbnail">
+                          <img src="{{product.image.url}}" style="width:100%">
+                          <div class="caption">
+                            <p>{{product.short_description}}</p>
+                          </div>
+                      
+                      </div>
+                      
+                    </div>   
+              </div>
+          {% endfor %}
+          
+        {% endif %}
+        </div>
+      </div>
+    
+</div>
+{% endblock %}

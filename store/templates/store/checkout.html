@@ -1,0 +1,83 @@
+{% extends 'store/main.html' %} 
+{% load static %} 
+{% block content %} 
+{%include 'store/topnav.html' %}
+{% include 'store/navbar.html' %}
+<div class="content-wrapper">
+<div class="login_sec">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li class="active">Buy</li>
+    </ol>
+     <h3 class="mb-3"> Product is: {{product.name}}</h3>
+      <h2 class="mt-4">YOUR INFORMATION</h2>
+      <div class="col-md-12 log">
+      <form action="/complete-checkout" method="POST" enctype="multipart/form-data" id ="post-form" autocomplete="off">
+      {% csrf_token %}
+  
+        <input type="hidden" name="product_id" value="{{product.id}}" />
+        <div class="col-md-6">
+        <h5>Full Name:</h5>
+        <input type="text" name="name" id ="name"/>
+        </div> 
+        <div class="col-md-6">
+        <h5>Email:</h5>
+        <input type="email" name="email" id ="email"/>
+        </div>
+        <div class="col-md-6">
+        <h5>Phone:</h5>
+        <input type="number" name="phone" id ="phone"/>
+        </div>
+        <div class="col-md-6">
+        <h5>Address:</h5>
+        <input type="text" name="address" id ="address"/>
+        </div>
+        <div class="col-md-6">
+        <h5>Quantity:</h5>
+        <input type="number" name="quantity" id ="quantity" value= "{{quantity}}" />
+        </div>
+        <div class="col-md-12">
+        <input type="submit" value="Submit"/>
+         </div>
+        <!-- <div class="text-right">
+        <input type="submit" class="item_add items text-right" value="Submit">
+      </div> -->
+      </form>
+     
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <!-- <script>
+    $(document).on('submit','#post-form',function(e){
+      e.preventDefault(); //stpos the page from refreshing
+      e.stopImmediatePropagation();
+      $.ajax({
+        type:'POST',
+        url:'/checkout',
+        data: {
+             name:$('#name').val(),
+             email:$('#email').val(),
+             phone:$('#phone').val(),
+             address:$('#address').val(),
+             quantity:$('#quantity').val(),
+             csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+        },
+        success:function(){
+              alert("Messaged Successfully");
+              $("#name").val(''); //yo 4ta chai after form submission clear the input 
+              $("#email").val('');
+              $("#phone").val('');
+              $("#address").val('');
+              $("#quantity").val('');
+        },
+      });
+    });
+  
+  </script> -->
+</div>
+</div>
+
+{% include 'store/footer.html' %}
+{% endblock %}
+

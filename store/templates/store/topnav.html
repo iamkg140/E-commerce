@@ -1,0 +1,29 @@
+{% load static %}
+<!-- topnav -->
+<div class="top_bg">
+  <div class="container">
+    <div class="header_top-sec">
+      <div class="top_right">
+        <ul>
+
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+      </div>
+      <div class="top_left">
+        <ul>
+          <li class="top_link">
+            Email:<a href="{{setting.email}}">{{setting.email}}</a>
+          </li>
+          |
+        </ul>
+        <div class="social">     
+             <a href="{{setting.yt}}" target="_blank"><i class="fab fa-youtube"></i></a>
+             <a href="{{setting.fb}}" target="_blank"><i class="fab fa-facebook"></i></a>
+             <a href="{{setting.tw}}" target="_blank"><i class="fab fa-twitter"></i></a>
+             <a href="{{setting.insta}}" target="_blank"><i class="fab fa-instagram"></i></a>          
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>

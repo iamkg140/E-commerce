@@ -1,0 +1,43 @@
+{% load static %}
+<!-- navbar -->
+<div class="header_top">
+  <div class="container">
+    <div class="logo">
+      <a href="{% url 'home' %}"><img src="{% static 'store/images/logo.png' %}" alt="" /></a>
+    </div>
+    <div class="header_right">	
+      <!-- <div class="login"> -->
+        <a href="{% url 'brochure' %}" target="_blank" >Brochure</a>
+      <!-- </div>				  -->
+    </div>
+  </div>
+</div>
+<!-- cart -->
+
+<div class="mega_nav">
+  <div class="container">
+    <div class="menu_sec">
+      <!-- start header menu -->
+      <ul class="megamenu skyblue">
+        <li class=" active grid">
+          <a class="color1" href="{% url 'home' %}">Home</a>
+        </li>
+        
+        <li class="grid">
+          {% for category in category_list %}
+          <a class="color1" href="{% url 'products' %}?category={{category.name}}">{{category.name}}</a>
+          {% endfor %}
+        </li>
+       
+      </ul>
+
+      <div class="search">
+        <form action="{% url 'searchbar' %}" method="GET">
+          <input type="text" value="{{request.GET.query}}" name="query" placeholder="Search..." />
+          <input type="submit" value=""/>
+        </form>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>

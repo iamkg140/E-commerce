@@ -1,0 +1,91 @@
+
+{% extends 'store/main.html' %} 
+{% load static %} 
+{% block content %}
+<!-- banner -->
+<div class="content"> 
+  <div class="container">
+    
+    <div class="slider">
+         
+      <ul class="rslides" id="slider1">
+        {% for banner in banner_image %} 
+        <li><img src="{{banner.image.url}}" alt="" /></li>
+        {% endfor %} 
+      </ul>  
+       
+    </div>
+   
+  </div>
+ 
+</div>
+<script>
+  // You can also use "$(window).load(function() {"
+  $(function () {
+    // Slideshow 1
+    $("#slider1").responsiveSlides({
+       auto: true,
+   nav: true,
+   speed: 500,
+   namespace: "callbacks",
+    });
+  });
+</script>
+
+
+
+<div class="top-sellers">
+  <div class="container">
+    <h3>FEATURED</h3>
+   
+    <div class="seller-grids">
+      {% for product in featured_list %}
+      <div class="col-md-2 seller-grid">
+        <a href="{% url 'products' %}"><img src="{{product.image.url}}" alt="" /></a>
+        <h4><a href="{% url 'products' %}">{{product.name}}</a></h4>
+        <span>ID: {{product.code}}</span>
+      </div>
+      {% endfor %}
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="top-sellers">
+  <div class="container">
+    <h3>OUR PRODUCTS</h3>
+    {% for category in category_list %}
+        <div class="row">
+          
+              <h4 class="my-4">{{category.name}}</h4>
+              {% for product in category.product_set.all %}
+              <div class="col-md-4">
+                
+                <div class="thumbnail">
+                    <img src="{{product.image.url}}" style="width:100%">
+                    <div class="caption">
+                      <p>{{product.short_description}}</p>
+                    </div>
+                
+                </div>
+ 
+                
+              </div class="view">
+              {% endfor %}
+              <div class=" text-center">
+              <a class="color1" href="{% url 'products' %}?category={{category.name}}">
+                <input type="button" class="item_add items "value="View All">
+              </a>
+ 
+              </div>  
+        </div>
+    {% endfor %}
+    
+  </div>
+
+</div>
+ 
+{% endblock %}
+
